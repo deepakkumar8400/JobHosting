@@ -23,7 +23,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 const corsOptions = {
-  origin: ["https://dpkjob3713.onrender.com", "http://localhost:5173"], // Add other domains if needed
+  origin: ["https://dpkjob3713.onrender.com"] // Add other domains if needed
   credentials: true,
 };
 app.use(cors(corsOptions));
