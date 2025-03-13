@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'http://localhost:4173',
+    origin:'https://dpkjob3713.onrender.com',
     credentials:true
 }
 
