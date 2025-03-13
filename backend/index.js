@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'*',
+    origin:'https://dpkjob3713.onrender.com',
     credentials:true
 }
 
