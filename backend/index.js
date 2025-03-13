@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: ['https://dpkjob3713.onrender.com','*'], // Allow only your frontend URL
-    credentials: true // Allow cookies and credentials
+    origin: 'https://dpkjob3713.onrender.com', // Your frontend URL
+    credentials: true, // Allow cookies
 };
 app.use(cors(corsOptions));
 
