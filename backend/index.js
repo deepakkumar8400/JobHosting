@@ -12,29 +12,26 @@ dotenv.config({});
 
 const app = express();
 
-// middleware
+// Middleware
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const corsOptions = {
-    origin:'https://dpkjob3713.onrender.com',
-    credentials:true
-}
 
+const corsOptions = {
+    origin: 'https://dpkjob3713.onrender.com', // Allow only your frontend URL
+    credentials: true // Allow cookies and credentials
+};
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3000;
 
-
-// api's
+// API Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-
-
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     connectDB();
     console.log(`Server running at port ${PORT}`);
-})
+});
