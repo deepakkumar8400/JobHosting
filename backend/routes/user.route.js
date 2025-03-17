@@ -18,8 +18,8 @@ router.get("/auth/google", passport.authenticate("google", { scope: ["profile", 
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: "http://localhost:5173",
-    failureRedirect: "http://localhost:5173/login",
+    successRedirect: "https://dpkjob3713.onrender.com",
+    failureRedirect: "https://dpkjob3713.onrender.com/login",
   })
 );
 
@@ -29,8 +29,8 @@ router.get("/auth/github", passport.authenticate("github", { scope: ["user:email
 router.get(
   "/auth/github/callback",
   passport.authenticate("github", {
-    successRedirect: "http://localhost:5173",
-    failureRedirect: "http://localhost:5173/login",
+    successRedirect: "https://dpkjob3713.onrender.com",
+    failureRedirect: "https://dpkjob3713.onrender.com/login",
   })
 );
 
