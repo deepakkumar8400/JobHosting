@@ -39,7 +39,7 @@ const startServer = async () => {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    const allowedOrigins = ["*"];
+    const allowedOrigins = ["https://dpkjob3713.onrender.com"];
 
     app.use(
       cors({
