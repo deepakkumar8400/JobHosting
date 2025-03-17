@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:9001/api/v1/user/auth/google/callback",
+      callbackURL: "https://jobhosting-backend.onrender.com/api/v1/user/auth/github/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -38,7 +38,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "http://localhost:9001/api/v1/user/auth/github/callback",
+      callbackURL: "https://jobhosting-backend.onrender.com/api/v1/user/auth/github/callback",
       scope: ["user:email"],
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -46,7 +46,7 @@ passport.use(
         let email = profile.emails?.[0]?.value || null;
 
         if (!email) {
-          const response = await fetch("https://api.github.com/user/emails", {
+          const response = await fetch("https://jobhosting-backend.onrender.com/api/v1/user/auth/github/callback", {
             headers: { Authorization: `token ${accessToken}` },
           });
           const emails = await response.json();
