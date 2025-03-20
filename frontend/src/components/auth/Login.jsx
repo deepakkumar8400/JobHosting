@@ -9,6 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../../redux/authSlice";
 import * as yup from "yup";
 
+// Define the validation schema
+const schema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+  role: yup.string().oneOf(["student", "recruiter"], "Invalid role").required("Role is required"),
+});
+
 function Login() {
   const [input, setInput] = useState({ email: "", password: "", role: "student" });
   const dispatch = useDispatch();
@@ -30,10 +37,12 @@ function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      // Note: You have a yup schema reference but it's not defined in this component
-      // I'll leave it as is, but you may need to define the schema
+      // Validate input using the schema
       await schema.validate(input, { abortEarly: false });
+
       dispatch(setLoading(true));
+      console.log("Login Payload:", input); // Debugging
+
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, { withCredentials: true });
 
       if (res.data.success) {
@@ -47,7 +56,7 @@ function Login() {
       if (error.name === "ValidationError") {
         error.errors.forEach((err) => toast.error(err));
       } else {
-        console.error("Login Error:", error.response?.data || error);
+        console.error("Login Error:", error.response?.data || error); // Debugging
         toast.error(error.response?.data?.message || "Login failed! Please try again.");
       }
     } finally {
